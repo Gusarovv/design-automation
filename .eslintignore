@@ -1,0 +1,14 @@
+**/node_modules
+**/.cache
+**/.env*
+!**/*.example
+**/.history
+**/.DS_Store
+**/Thumbs.db
+**/.vscode
+
+**/dist
+**/lib
+**/build
+**/pgdata
+**/coverage
