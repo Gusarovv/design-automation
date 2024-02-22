@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["vite/client", "vite-plugin-svgr/client"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -16,9 +20,23 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+       "@ui": ["./src/shared/ui"],
+       "@ui/*": ["./src/shared/ui/*"],
+       "@shared": ["./src/shared"],
+       "@shared/*": ["./src/shared/*"],
+       "@app": ["./src/app"],
+       "@app/*": ["./src/app/*"],
+       "@pages": ["./src/pages"],
+       "@pages/*": ["./src/pages/*"],
+       "@layout": ["./src/layout"],
+       "@layout/*": ["./src/layout/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
