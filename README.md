@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# 🚀 Chat App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Chat App** - это full-stack приложение для обмена сообщениями, объединяющее в себе backend на Python и frontend на React.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Особенности 
 
-## Expanding the ESLint configuration
+- 👥 Регистрация и авторизация пользователей
+- 💬 Отправка и получение сообщений в реальном времени
+- 🔍 Поиск сообщений по ID
+- 👀 Автоматическое увеличение количества просмотров сообщений
+- 📱 Адаптивный и привлекательный пользовательский интерфейс
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Технологический стек 
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Frontend:
+
+- React с использованием функциональных компонентов и хуков
+- Redux Toolkit для управления состоянием
+- Tailwind CSS для стилизации
+- Framer Motion для добавления анимаций
+- RTK Query для эффективной работы с серверным API
+- React Router для организации навигации по приложению
+
+### Backend:
+
+- Фреймворк FastAPI для создания REST API
+- Uvicorn как ASGI сервер для запуска приложения
+- Pydantic для валидации и управления данными
+- Bcrypt для безопасного хеширования паролей
+
+---
+
+## 🚀 Установка и запуск 
+
+Вы можете запустить весь проект с помощью скрипта `start.sh`, который сначала запустит backend в Docker, а затем соберет и запустит frontend:
+```bash
+./start.sh
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**P.S.** Убедитесь, что у вас установлен Docker и Docker Compose, а также Node.js и npm.
