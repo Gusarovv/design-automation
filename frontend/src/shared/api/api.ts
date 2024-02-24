@@ -1,4 +1,5 @@
 import { BaseQueryApi, FetchArgs, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { setUserIsAuth } from '../store/reducers/UserSlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${import.meta.env.VITE_S_URL}`,
@@ -17,14 +18,7 @@ const baseQueryWithRefresh = async (args: FetchArgs, api: BaseQueryApi, extraOpt
   let result = await baseQuery(args, api, extraOptions);
   if (result?.error?.status === 401) {
     localStorage.removeItem('token');
-    // const refreshResult = await baseQuery(
-    //   {
-    //     url: '/oauth/refresh',
-    //     method: 'POST',
-    //   },
-    //   api,
-    //   extraOptions,
-    // );
+    api.dispatch(setUserIsAuth(false))
   }
   return result;
 };
