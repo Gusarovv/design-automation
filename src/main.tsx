@@ -9,7 +9,6 @@ import { store } from './shared/store/store.ts';
 import { ErrorBoundary } from './shared/util/ErrorBoundary';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  // TODO: test
   <ErrorBoundary>
     <Provider store={store}>
       <ThemeProvider>
