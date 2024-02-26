@@ -5,7 +5,7 @@ import { FiAlertTriangle } from 'react-icons/fi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 
 import { authAPI } from '../shared/api/auth';
-import { useAppDispatch, useAppSelector } from '../shared/hooks/useAppRedux';
+import { useAppDispatch } from '../shared/hooks/useAppRedux';
 import { setUserIsAuth } from '../shared/store/reducers/UserSlice';
 
 export const AuthPage = () => {
@@ -77,7 +77,16 @@ export const AuthPage = () => {
         setIsLogin(true);
       }
     } catch (error) {
-      setApiError((error as any).data?.message || (error as any).data?.detail || 'An error occurred.');
+      const detail = (error as any).data?.detail;
+      if (detail && detail.length > 0) {
+        // Формируем сообщение об ошибке
+        const firstError = detail[0];
+        const errorLocation = firstError.loc.join(' > ');
+        setApiError(`Error at ${errorLocation}: ${firstError.msg}.`);
+      } else {
+        // Устанавливаем общее сообщение об ошибке, если нет поля detail
+        setApiError((error as any).data?.message || 'An error occurred.');
+      }
     }
   };
 
