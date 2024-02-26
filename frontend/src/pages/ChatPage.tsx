@@ -137,6 +137,7 @@ export const ChatPage = () => {
         .unwrap()
         .then((data: MessageDto) => (newMessageData = data));
       setSuccess('Message sent successfully!');
+      setMessage('');
       dispatch(messagesAPI.util.updateQueryData('getMessages', undefined, (data) => [...data, newMessageData]));
     } catch (error) {
       setApiError((error as any).data?.message || (error as any).data?.detail || 'An error occurred.');
@@ -203,6 +204,7 @@ export const ChatPage = () => {
               placeholder="Type your message here..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && sendNewMessage()}
             />
             <button className="bg-indigo-500 hover:bg-indigo-600 text-white p-2 rounded-r-md" onClick={sendNewMessage}>
               <IoMdSend />
